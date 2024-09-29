@@ -113,10 +113,6 @@ class FunkinLua {
 		set('seenCutscene', PlayState.seenCutscene);
 		set('hasVocals', PlayState.SONG.needsVoices);
 
-		// Camera poo
-		set('cameraX', 0);
-		set('cameraY', 0);
-
 		// Screen stuff
 		set('screenWidth', FlxG.width);
 		set('screenHeight', FlxG.height);
@@ -135,6 +131,7 @@ class FunkinLua {
 			set('misses', 0);
 			set('hits', 0);
 			set('combo', 0);
+			set('deaths', PlayState.deathCounter);
 	
 			set('rating', 0);
 			set('ratingName', '');
@@ -826,15 +823,28 @@ class FunkinLua {
 			game.moveCamera(isDad);
 			return isDad;
 		});
+
+		set("setCameraScroll", function(x:Float, y:Float) FlxG.camera.scroll.set(x - FlxG.width/2, y - FlxG.height/2));
+		set("setCameraFollowPoint", function(x:Float, y:Float) game.camFollow.setPosition(x, y));
+		set("addCameraScroll", function(?x:Float = 0, ?y:Float = 0) FlxG.camera.scroll.add(x, y));
+		set("addCameraFollowPoint", function(?x:Float = 0, ?y:Float = 0) {
+			game.camFollow.x += x;
+			game.camFollow.y += y;
+		});
+		set("getCameraScrollX", () -> FlxG.camera.scroll.x + FlxG.width/2);
+		set("getCameraScrollY", () -> FlxG.camera.scroll.y + FlxG.height/2);
+		set("getCameraFollowX", () -> game.camFollow.x);
+		set("getCameraFollowY", () -> game.camFollow.y);
+
 		set("cameraShake", function(camera:String, intensity:Float, duration:Float) {
 			LuaUtils.cameraFromString(camera).shake(intensity, duration);
 		});
 
 		set("cameraFlash", function(camera:String, color:String, duration:Float,forced:Bool) {
-			LuaUtils.cameraFromString(camera).flash(CoolUtil.colorFromString(color), duration, null,forced);
+			LuaUtils.cameraFromString(camera).flash(CoolUtil.colorFromString(color), duration, null, forced);
 		});
-		set("cameraFade", function(camera:String, color:String, duration:Float,forced:Bool) {
-			LuaUtils.cameraFromString(camera).fade(CoolUtil.colorFromString(color), duration, false,null,forced);
+		set("cameraFade", function(camera:String, color:String, duration:Float, forced:Bool, ?fadeOut:Bool = false) {
+			LuaUtils.cameraFromString(camera).fade(CoolUtil.colorFromString(color), duration, fadeOut, null, forced);
 		});
 		set("setRatingPercent", function(value:Float) {
 			game.ratingPercent = value;
