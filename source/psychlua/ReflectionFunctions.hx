@@ -160,7 +160,7 @@ class ReflectionFunctions
 			}
 			else groupOrArray.insert(index, obj);
 		});
-		Lua_helper.add_callback(lua, "removeFromGroup", function(group:String, ?index:Int = -1, ?tag:String = null, ?destroy:Bool = true) {
+		funk.set("removeFromGroup", function(group:String, ?index:Int = -1, ?tag:String = null, ?destroy:Bool = true) {
 			var obj:FlxSprite = null;
 			if(tag != null)
 			{
