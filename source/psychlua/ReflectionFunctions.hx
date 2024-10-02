@@ -21,13 +21,13 @@ class ReflectionFunctions
 				return LuaUtils.getVarInArray(LuaUtils.getPropertyLoop(split, true, allowMaps), split[split.length-1], allowMaps);
 			return LuaUtils.getVarInArray(LuaUtils.getTargetInstance(), variable, allowMaps);
 		});
-		funk.set("setProperty", function(variable:String, value:Dynamic, ?allowMaps:Bool = false) {
+		funk.set("setProperty", function(variable:String, value:Dynamic, ?allowMaps:Bool = false, ?allowInstances:Bool = false) {
 			var split:Array<String> = variable.split('.');
 			if(split.length > 1) {
-				LuaUtils.setVarInArray(LuaUtils.getPropertyLoop(split, true, allowMaps), split[split.length-1], value, allowMaps);
+				LuaUtils.setVarInArray(LuaUtils.getPropertyLoop(split, true, allowMaps), split[split.length-1], allowInstances ? parseSingleInstance(value) : value, allowMaps);
 				return value;
 			}
-			LuaUtils.setVarInArray(LuaUtils.getTargetInstance(), variable, value, allowMaps);
+			LuaUtils.setVarInArray(LuaUtils.getTargetInstance(), variable, allowInstances ? parseSingleInstance(value) : value, allowMaps);
 			return value;
 		});
 		funk.set("getPropertyFromClass", function(classVar:String, variable:String, ?allowMaps:Bool = false) {
@@ -48,7 +48,7 @@ class ReflectionFunctions
 			}
 			return LuaUtils.getVarInArray(myClass, variable, allowMaps);
 		});
-		funk.set("setPropertyFromClass", function(classVar:String, variable:String, value:Dynamic, ?allowMaps:Bool = false) {
+		funk.set("setPropertyFromClass", function(classVar:String, variable:String, value:Dynamic, ?allowMaps:Bool = false, ?allowInstances:Bool = false) {
 			var myClass:Dynamic = Type.resolveClass(classVar);
 			if(myClass == null)
 			{
@@ -62,10 +62,10 @@ class ReflectionFunctions
 				for (i in 1...split.length-1)
 					obj = LuaUtils.getVarInArray(obj, split[i], allowMaps);
 
-				LuaUtils.setVarInArray(obj, split[split.length-1], value, allowMaps);
+				LuaUtils.setVarInArray(obj, split[split.length-1], allowInstances ? parseSingleInstance(value) : value, allowMaps);
 				return value;
 			}
-			LuaUtils.setVarInArray(myClass, variable, value, allowMaps);
+			LuaUtils.setVarInArray(myClass, variable, allowInstances ? parseSingleInstance(value) : value, allowMaps);
 			return value;
 		});
 		funk.set("getPropertyFromGroup", function(group:String, index:Int, variable:Dynamic, ?allowMaps:Bool = false) {
@@ -230,7 +230,7 @@ class ReflectionFunctions
 					return false;
 				}
 
-				var obj:Dynamic = Type.createInstance(myType, args);
+				var obj:Dynamic = Type.createInstance(myType, parseInstances(args));
 				if(obj != null)
 					MusicBeatState.getVariables().set(variableToSave, obj);
 				else
