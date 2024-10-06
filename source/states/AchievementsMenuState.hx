@@ -268,7 +268,7 @@ class ResetAchievementSubstate extends MusicBeatSubstate
 
 	public function new()
 	{
-                controls.isInSubstate = true;
+		controls.isInSubstate = true;
 
 		super();
 
