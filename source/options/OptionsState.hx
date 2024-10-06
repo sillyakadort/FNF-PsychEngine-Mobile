@@ -122,7 +122,7 @@ class OptionsState extends MusicBeatState
 		DiscordClient.changePresence("Options Menu", null);
 		#end
 		controls.isInSubstate = false;
-        removeTouchPad();
+        	removeTouchPad();
 		addTouchPad('UP_DOWN', 'A_B');
 		persistentUpdate = true;
 	}

@@ -321,7 +321,7 @@ class HScript extends Iris
 			set('addBehindDad', PlayState.instance.addBehindDad);
 			set('addBehindBF', PlayState.instance.addBehindBF);
 		}
-        #if LUA_ALLOWED
+        	#if LUA_ALLOWED
 		set("addTouchPad", (DPadMode:String, ActionMode:String) -> {
 			PlayState.instance.makeLuaTouchPad(DPadMode, ActionMode);
 			PlayState.instance.addLuaTouchPad();
@@ -363,16 +363,6 @@ class HScript extends Iris
 			return PlayState.instance.luaTouchPadJustReleased(button);
 		});
                 #end
-
-		if(varsToBring != null) {
-			for (key in Reflect.fields(varsToBring)) {
-				key = key.trim();
-				var value = Reflect.field(varsToBring, key);
-				//trace('Key $key: $value');
-				set(key, Reflect.field(varsToBring, key));
-			}
-			varsToBring = null;
-		}
 	}
 
 	public function executeCode(?funcToRun:String = null, ?funcArgs:Array<Dynamic> = null):IrisCall {

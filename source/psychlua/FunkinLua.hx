@@ -1776,10 +1776,10 @@ class FunkinLua {
 	}
 
 	public function addLocalCallback(name:String, myFunction:Dynamic)
-		{
-			callbacks.set(name, myFunction);
-			Lua_helper.add_callback(lua, name, null); //just so that it gets called
-		}
+	{
+		callbacks.set(name, myFunction);
+		Lua_helper.add_callback(lua, name, null); //just so that it gets called
+	}
 
 	#if (MODS_ALLOWED && !flash && sys)
 	public var runtimeShaders:Map<String, Array<String>> = new Map<String, Array<String>>();

@@ -1023,25 +1023,19 @@ class NoteSplashEditorHelpSubState extends MusicBeatSubstate
         bg.alpha = 0.6;
         add(bg);
 
-		var str:Array<String> = controls.mobileC ? ["Touch on a Strum",
-        "to spawn a Splash",
-        "",
-        "Arrow Keys - Move Offset",
-        "Hold Z - Move Offsets 10x faster",
-        "",
-        "",
-        "C - Copy Current Offset",
-		"V - Paste Copied Offset on Current Splash"
-        ]: ["Click on a Strum or Press Space",
-		"to spawn a Splash",
-		"",
-		"Arrow Keys - Move Offset",
-		"Hold Shift - Move Offsets 10x faster",
-		"",
-		"",
-		"Ctrl + C - Copy Current Offset",
-		"Ctrl + V - Paste Copied Offset on Current Splash",
-		"Ctrl + R - Reset Current Offset"];
+		var str:Array<String> = controls.mobileC ? ["Touch on a Strum", "to spawn a Splash", "", "Arrow Keys - Move Offset",
+			"Hold Z - Move Offsets 10x faster", "", "", "C - Copy Current Offset", "V - Paste Copied Offset on Current Splash"] : [
+			"Click on a Strum or Press Space",
+			"to spawn a Splash",
+			"",
+			"Arrow Keys - Move Offset",
+			"Hold Shift - Move Offsets 10x faster",
+			"",
+			"",
+			"Ctrl + C - Copy Current Offset",
+			"Ctrl + V - Paste Copied Offset on Current Splash",
+			"Ctrl + R - Reset Current Offset"
+		];
 
 		var helpTexts:FlxSpriteGroup = new FlxSpriteGroup();
 		for (i => txt in str)

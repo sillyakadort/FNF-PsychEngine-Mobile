@@ -5,13 +5,17 @@ import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.graphics.FlxGraphic;
 import flixel.math.FlxRect;
 import flixel.system.FlxAssets;
+
 import openfl.display.BitmapData;
 import openfl.display3D.textures.RectangleTexture;
 import openfl.utils.AssetType;
-import openfl.utils.Assets;
+import openfl.utils.Assets as OpenFlAssets;
 import openfl.system.System;
 import openfl.geom.Rectangle;
-import openfl.media.Sound;
+
+import lime.utils.Assets;
+import flash.media.Sound;
+
 import haxe.Json;
 
 
@@ -114,7 +118,7 @@ class Paths
 		if (currentLevel != null && currentLevel != 'shared')
 		{
 			var levelPath = getFolderPath(file, currentLevel);
-			if (Assets.exists(levelPath, type))
+			if (OpenFlAssets.exists(levelPath, type))
 				return levelPath;
 		}
 		return getSharedPath(file);
@@ -194,9 +198,8 @@ class Paths
 			#if MODS_ALLOWED
 			if (FileSystem.exists(file))
 				bitmap = BitmapData.fromFile(file);
-
-			else #end if (Assets.exists(file, IMAGE))
-				bitmap = Assets.getBitmapData(file);
+			else #end if (OpenFlAssets.exists(file, IMAGE))
+				bitmap = OpenFlAssets.getBitmapData(file);
 
 			if (bitmap == null)
 			{
@@ -235,7 +238,7 @@ class Paths
 		#if sys
 		return (FileSystem.exists(path)) ? File.getContent(path) : null;
 		#else
-		return (Assets.exists(path, TEXT)) ? Assets.getText(path) : null;
+		return (OpenFlAssets.exists(path, TEXT)) ? Assets.getText(path) : null;
 		#end
 	}
 
@@ -264,7 +267,7 @@ class Paths
 				return true;
 		}
 		#end
-		return (Assets.exists(getPath(key, type, parentFolder, false)));
+		return (OpenFlAssets.exists(getPath(key, type, parentFolder, false)));
 	}
 
 	static public function getAtlas(key:String, ?parentFolder:String = null, ?allowGPU:Bool = true):FlxAtlasFrames
@@ -273,7 +276,7 @@ class Paths
 		var imageLoaded:FlxGraphic = image(key, parentFolder, allowGPU);
 
 		var myXml:Dynamic = getPath('images/$key.xml', TEXT, parentFolder, true);
-		if(Assets.exists(myXml) #if MODS_ALLOWED || (FileSystem.exists(myXml) && (useMod = true)) #end )
+		if(OpenFlAssets.exists(myXml) #if MODS_ALLOWED || (FileSystem.exists(myXml) && (useMod = true)) #end )
 		{
 			#if MODS_ALLOWED
 			return FlxAtlasFrames.fromSparrow(imageLoaded, (useMod ? File.getContent(myXml) : myXml));
@@ -284,7 +287,7 @@ class Paths
 		else
 		{
 			var myJson:Dynamic = getPath('images/$key.json', TEXT, parentFolder, true);
-			if(Assets.exists(myJson) #if MODS_ALLOWED || (FileSystem.exists(myJson) && (useMod = true)) #end )
+			if(OpenFlAssets.exists(myJson) #if MODS_ALLOWED || (FileSystem.exists(myJson) && (useMod = true)) #end )
 			{
 				#if MODS_ALLOWED
 				return FlxAtlasFrames.fromTexturePackerJson(imageLoaded, (useMod ? File.getContent(myJson) : myJson));
@@ -380,8 +383,8 @@ class Paths
 			if(FileSystem.exists(file))
 				currentTrackedSounds.set(file, Sound.fromFile(file));
 			#else
-			if(Assets.exists(file, SOUND))
-				currentTrackedSounds.set(file, Assets.getSound(file));
+			if(OpenFlAssets.exists(file, SOUND))
+				currentTrackedSounds.set(file, OpenFlAssets.getSound(file));
 			#end
 			else if(beepOnNull)
 			{

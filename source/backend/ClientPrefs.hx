@@ -3,6 +3,7 @@ package backend;
 import flixel.util.FlxSave;
 import flixel.input.keyboard.FlxKey;
 import flixel.input.gamepad.FlxGamepadInputID;
+
 import states.TitleState;
 
 // Add a variable here and it will get automatically saved
@@ -20,6 +21,7 @@ import states.TitleState;
 	public var hitboxType:String = "Gradient";
 	public var popUpRating:Bool = true;
 	public var vsync:Bool = false;
+	public var gameOverVibration:Bool = false;
 	
 	public var downScroll:Bool = false;
 	public var middleScroll:Bool = false;
@@ -35,7 +37,6 @@ import states.TitleState;
 	public var shaders:Bool = true;
 	public var cacheOnGPU:Bool = #if !switch false #else true #end; //From Stilic
 	public var framerate:Int = 60;
-	public var gameOverVibration:Bool = false;
 	public var camZooms:Bool = true;
 	public var hideHud:Bool = false;
 	public var noteOffset:Int = 0;
@@ -103,7 +104,7 @@ class ClientPrefs {
 		'note_up'		=> [W, UP],
 		'note_left'		=> [A, LEFT],
 		'note_down'		=> [S, DOWN],
-		'note_right'	        => [D, RIGHT],
+		'note_right'	=> [D, RIGHT],
 		
 		'ui_up'			=> [W, UP],
 		'ui_left'		=> [A, LEFT],
@@ -128,7 +129,7 @@ class ClientPrefs {
 		'note_up'		=> [DPAD_UP, Y],
 		'note_left'		=> [DPAD_LEFT, X],
 		'note_down'		=> [DPAD_DOWN, A],
-		'note_right'	        => [DPAD_RIGHT, B],
+		'note_right'	=> [DPAD_RIGHT, B],
 		
 		'ui_up'			=> [DPAD_UP, LEFT_STICK_DIGITAL_UP],
 		'ui_left'		=> [DPAD_LEFT, LEFT_STICK_DIGITAL_LEFT],

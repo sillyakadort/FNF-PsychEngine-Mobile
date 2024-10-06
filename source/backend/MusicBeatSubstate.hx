@@ -12,6 +12,7 @@ class MusicBeatSubstate extends FlxSubState
 		controls.isInSubstate = true;
 		super();
 	}
+
 	private var curSection:Int = 0;
 	private var stepsToDo:Int = 0;
 

@@ -8,6 +8,7 @@ import objects.Bar;
 class AchievementsMenuState extends MusicBeatState
 {
 	public var curSelected:Int = 0;
+
 	public var options:Array<Dynamic> = [];
 	public var grpOptions:FlxSpriteGroup;
 	public var nameText:FlxText;
@@ -310,7 +311,7 @@ class ResetAchievementSubstate extends MusicBeatSubstate
 		if(controls.BACK)
 		{
 			close();
-            controls.isInSubstate = false;
+			controls.isInSubstate = false;
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			return;
 		}
