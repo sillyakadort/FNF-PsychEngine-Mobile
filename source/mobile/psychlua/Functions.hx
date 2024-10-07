@@ -135,7 +135,7 @@ class MobileFunctions
 		funk.set("touchPressed", TouchUtil.pressed);
 		funk.set("touchJustReleased", TouchUtil.justReleased);
 		funk.set("touchReleased", TouchUtil.released);
-		funk.set("touchPressedObject", function(object:String, camera:String):Bool
+		funk.set("touchPressedObject", function(object:String, ?camera:String):Bool
 		{
 			var obj = PlayState.instance.getLuaObject(object);
 			var cam:FlxCamera = LuaUtils.cameraFromString(camera);
@@ -147,7 +147,7 @@ class MobileFunctions
 			return TouchUtil.overlaps(obj, cam) && TouchUtil.pressed;
 		});
 
-		funk.set("touchJustPressedObject", function(object:String, camera:String):Bool
+		funk.set("touchJustPressedObject", function(object:String, ?camera:String):Bool
 		{
 			var obj = PlayState.instance.getLuaObject(object);
 			var cam:FlxCamera = LuaUtils.cameraFromString(camera);
@@ -159,7 +159,7 @@ class MobileFunctions
 			return TouchUtil.overlaps(obj, cam) && TouchUtil.justPressed;
 		});
 
-		funk.set("touchJustReleasedObject", function(object:String, camera:String):Bool
+		funk.set("touchJustReleasedObject", function(object:String, ?camera:String):Bool
 		{
 			var obj = PlayState.instance.getLuaObject(object);
 			var cam:FlxCamera = LuaUtils.cameraFromString(camera);
@@ -171,7 +171,7 @@ class MobileFunctions
 			return TouchUtil.overlaps(obj, cam) && TouchUtil.justReleased;
 		});
 
-		funk.set("touchReleasedObject", function(object:String, camera:String):Bool
+		funk.set("touchReleasedObject", function(object:String, ?camera:String):Bool
 		{
 			var obj = PlayState.instance.getLuaObject(object);
 			var cam:FlxCamera = LuaUtils.cameraFromString(camera);
@@ -183,7 +183,7 @@ class MobileFunctions
 			return TouchUtil.overlaps(obj, cam) && TouchUtil.released;
 		});
 
-		funk.set("touchPressedObjectComplex", function(object:String, camera:String):Bool
+		funk.set("touchPressedObjectComplex", function(object:String, ?camera:String):Bool
 		{
 			var obj = PlayState.instance.getLuaObject(object);
 			var cam:FlxCamera = LuaUtils.cameraFromString(camera);
@@ -195,7 +195,7 @@ class MobileFunctions
 			return TouchUtil.overlapsComplex(obj, cam) && TouchUtil.pressed;
 		});
 
-		funk.set("touchJustPressedObjectComplex", function(object:String, camera:String):Bool
+		funk.set("touchJustPressedObjectComplex", function(object:String, ?camera:String):Bool
 		{
 			var obj = PlayState.instance.getLuaObject(object);
 			var cam:FlxCamera = LuaUtils.cameraFromString(camera);
@@ -207,7 +207,7 @@ class MobileFunctions
 			return TouchUtil.overlapsComplex(obj, cam) && TouchUtil.justPressed;
 		});
 
-		funk.set("touchJustReleasedObjectComplex", function(object:String, camera:String):Bool
+		funk.set("touchJustReleasedObjectComplex", function(object:String, ?camera:String):Bool
 		{
 			var obj = PlayState.instance.getLuaObject(object);
 			var cam:FlxCamera = LuaUtils.cameraFromString(camera);
@@ -219,7 +219,7 @@ class MobileFunctions
 			return TouchUtil.overlapsComplex(obj, cam) && TouchUtil.justReleased;
 		});
 
-		funk.set("touchReleasedObjectComplex", function(object:String, camera:String):Bool
+		funk.set("touchReleasedObjectComplex", function(object:String, ?camera:String):Bool
 		{
 			var obj = PlayState.instance.getLuaObject(object);
 			var cam:FlxCamera = LuaUtils.cameraFromString(camera);
@@ -231,7 +231,7 @@ class MobileFunctions
 			return TouchUtil.overlapsComplex(obj, cam) && TouchUtil.released;
 		});
 
-		funk.set("touchOverlapsObject", function(object:String, camera:String):Bool
+		funk.set("touchOverlapsObject", function(object:String, ?camera:String):Bool
 		{
 			var obj = PlayState.instance.getLuaObject(object);
 			var cam:FlxCamera = LuaUtils.cameraFromString(camera);
@@ -243,7 +243,7 @@ class MobileFunctions
 			return TouchUtil.overlaps(obj, cam);
 		});
 
-		funk.set("touchOverlapsObjectComplex", function(object:String, camera:String):Bool
+		funk.set("touchOverlapsObjectComplex", function(object:String, ?camera:String):Bool
 		{
 			var obj = PlayState.instance.getLuaObject(object);
 			var cam:FlxCamera = LuaUtils.cameraFromString(camera);
