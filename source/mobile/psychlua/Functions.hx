@@ -280,7 +280,7 @@ class AndroidFunctions
 	// static var spicyPillow:AndroidBatteryManager = new AndroidBatteryManager();
 	public static function implement(funk:FunkinLua)
 	{
-		funk.set("isRooted", AndroidTools.isRooted());
+		// funk.set("isRooted", AndroidTools.isRooted());
 		funk.set("isDolbyAtmos", AndroidTools.isDolbyAtmos());
 		funk.set("isAndroidTV", AndroidTools.isAndroidTV());
 		funk.set("isTablet", AndroidTools.isTablet());
