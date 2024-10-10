@@ -68,6 +68,22 @@ class MobileFunctions
 			return false;
 		});
 
+		funk.set("extraButtonReleased", (button:String) ->
+		{
+			button = button.toLowerCase();
+			if (MusicBeatState.getState().mobileControls != null)
+			{
+				switch (button)
+				{
+					case 'second':
+						return MusicBeatState.getState().mobileControls.buttonExtra2.released;
+					default:
+						return MusicBeatState.getState().mobileControls.buttonExtra.released;
+				}
+			}
+			return false;
+		});
+
 		funk.set("vibrate", (?duration:Int, ?period:Int) ->
 		{
 			if (duration == null)
@@ -129,6 +145,15 @@ class MobileFunctions
 				return false;
 			}
 			return PlayState.instance.luaTouchPadJustReleased(button);
+		});
+
+		funk.set("touchPadReleased", function(button:Dynamic):Bool
+		{
+			if (PlayState.instance.luaTouchPad == null)
+			{
+				return false;
+			}
+			return PlayState.instance.luaTouchPadReleased(button);
 		});
 
 		funk.set("touchJustPressed", TouchUtil.justPressed);
