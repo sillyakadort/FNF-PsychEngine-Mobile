@@ -54,6 +54,17 @@ class MobileInputManager extends FlxTypedSpriteGroup<TouchButton>
 	}
 
 	/**
+	 * Check to see if the button is released.
+	 *
+	 * @param	button 	A button ID
+	 * @return	Whether at least one of the buttons passed is released.
+	 */
+	public inline function buttonReleased(button:MobileInputID):Bool
+	{
+		return anyReleased([button]);
+	}
+
+	/**
 	 * Check to see if at least one button from an array of buttons is pressed.
 	 *
 	 * @param	buttonsArray 	An array of buttos names
