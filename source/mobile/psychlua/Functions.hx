@@ -98,7 +98,7 @@ class MobileFunctions
 		{
 			if (PlayState.instance.luaTouchPad == null)
 			{
-				FunkinLua.luaTrace('addTouchPadCamera: Virtual Pad does not exist.');
+				FunkinLua.luaTrace('addTouchPadCamera: Touch Pad does not exist.');
 				return;
 			}
 			PlayState.instance.addLuaTouchPadCamera();
