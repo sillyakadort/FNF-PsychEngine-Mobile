@@ -18,7 +18,7 @@ same goes for *Lua Scripts*, comment out or delete the line with `LUA_ALLOWED`, 
 * Moxie - Helper.
 
 ### Mobile Special Thanks
-* Mihai Alexandru - Author of old mobile controls, new storage stuff and FlxRuntimeShader.
+* MAJigsaw77 - Author of old mobile controls, new storage stuff and FlxRuntimeShader.
 * FutureDorito - iOS Helper.
 * Sector - Touch Pad Artist.
 
