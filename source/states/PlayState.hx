@@ -2805,12 +2805,9 @@ class PlayState extends MusicBeatState
 		var releaseArray:Array<Bool> = [false, false, false, false];
 		for (i => key in keysArray)
 		{
-			holdArray[i] = controls.pressed(key);
-			if(controls.controllerMode)
-			{
-				pressArray[i] = controls.justPressed(key);
-				releaseArray[i] = controls.justReleased(key);
-			}
+			holdArray.push(controls.pressed(key));
+			pressArray.push(controls.justPressed(key));
+			releaseArray.push(controls.justReleased(key));
 		}
 
 		// TO DO: Find a better way to handle controller inputs, this should work for now
