@@ -1,4 +1,4 @@
-# Friday Night Funkin' - Psych Engine LTS
+# Friday Night Funkin' - Psych Engine Mobile
 
 Engine originally used on [Mind Games Mod](https://gamebanana.com/mods/301107), intended to be a fix for the vanilla version's many issues while keeping the casual play aspect of it. Also aiming to be an easier alternative to newbie coders.
 
@@ -12,12 +12,12 @@ to start you off, disabling Videos should be simple, simply Delete the line `"VI
 
 same goes for *Lua Scripts*, comment out or delete the line with `LUA_ALLOWED`, this and other customization options are all available within the `Project.xml` file
 
-## LTS Credits:
-* Lily - Creator, Head Porter and linc_luajit-rewriten.
+## Mobile Credits:
+* Lily - Head Porter and linc_luajit-rewriten.
 * Karim - Second Porter.
 * Moxie - Helper.
 
-### LTS Special Thanks
+### Mobile Special Thanks
 * MAJigsaw77 - Author of old mobile controls, new storage stuff and FlxRuntimeShader.
 * FutureDorito - iOS Helper.
 * Sector - Touch Pad Artist.
