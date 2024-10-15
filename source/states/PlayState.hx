@@ -2803,7 +2803,7 @@ class PlayState extends MusicBeatState
 		var holdArray:Array<Bool> = [false, false, false, false];
 		var pressArray:Array<Bool> = [false, false, false, false];
 		var releaseArray:Array<Bool> = [false, false, false, false];
-		for (i => key in keysArray)
+		for (key in keysArray)
 		{
 			holdArray.push(controls.pressed(key));
 			pressArray.push(controls.justPressed(key));
