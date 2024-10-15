@@ -112,8 +112,8 @@ jobs:
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: true
-          automatic_release_tag: "devbuild-${{ needs.get-commit-hash.outputs.commit_hash }}"
-          title: "DevBuild ${{ needs.get-commit-hash.outputs.commit_hash }}"
+          automatic_release_tag: "1.0"
+          title: "1.0"
           files: |
             /home/runner/*.apk
             /home/runner/*.zip
