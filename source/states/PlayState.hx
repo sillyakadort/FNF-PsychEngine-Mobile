@@ -2800,9 +2800,9 @@ class PlayState extends MusicBeatState
 	private function keysCheck():Void
 	{
 		// HOLDING
-		var holdArray:Array<Bool> = [false, false, false, false];
-		var pressArray:Array<Bool> = [false, false, false, false];
-		var releaseArray:Array<Bool> = [false, false, false, false];
+		var holdArray:Array<Bool> = [];
+		var pressArray:Array<Bool> = [];
+		var releaseArray:Array<Bool> = [];
 		for (key in keysArray)
 		{
 			holdArray.push(controls.pressed(key));
