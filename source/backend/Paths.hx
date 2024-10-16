@@ -532,7 +532,7 @@ class Paths
 					dirs.push(dir);
 			}
 		}
-		return dirs;
+		return dirs.map(dir -> dir.substr(dir.lastIndexOf("/") + 1));
 		#end
 	}
 }
