@@ -25,6 +25,8 @@ class StorageUtil
 		daPath = Path.addTrailingSlash(daPath);
 		#elseif ios
 		daPath = LimeSystem.documentsDirectory;
+		#else
+		daPath = Sys.getCwd();
 		#end
 
 		return daPath;
