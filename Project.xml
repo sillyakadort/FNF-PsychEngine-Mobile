@@ -26,7 +26,7 @@
 	<define name="ACHIEVEMENTS_ALLOWED" />
 	<define name="DISCORD_ALLOWED" if="desktop" unless="hl"/>
 	<define name="TRANSLATIONS_ALLOWED" />
-	<define name="COPYSTATE_ALLOWED" if="mobile"/>
+	<define name="COPYSTATE_ALLOWED" if="MODS_ALLOWED mobile"/>
 	<define name="IRIS_DEBUG"/>
 	
 	<define name="SHOW_LOADING_SCREEN" />
