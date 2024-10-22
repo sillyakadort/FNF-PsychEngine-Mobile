@@ -2,6 +2,7 @@ name: Mobile + Release
 on: workflow_dispatch
 permissions:
   contents: write
+  discussions: write
 jobs:
   get-commit-hash:
     runs-on: ubuntu-latest
@@ -70,12 +71,11 @@ jobs:
         run: zip -r /home/runner/PsychEngine-iOS.zip ${{ github.workspace }}/PsychEngine.ipa
 
       - name: Publish The Release
-        uses: marvinpinto/action-automatic-releases@latest
+        uses: softprops/action-gh-release@master
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          name: "DevBuild ${{ needs.get-commit-hash.outputs.commit_hash }}"
+          tag_name: "devbuild-${{ needs.get-commit-hash.outputs.commit_hash }}"
           prerelease: true
-          automatic_release_tag: "devbuild-${{ needs.get-commit-hash.outputs.commit_hash }}"
-          title: "DevBuild ${{ needs.get-commit-hash.outputs.commit_hash }}"
           files: |
             /home/runner/*.apk
             /home/runner/*.zip
