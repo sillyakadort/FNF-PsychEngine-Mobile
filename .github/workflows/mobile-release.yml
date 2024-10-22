@@ -8,6 +8,13 @@ jobs:
     outputs:
       commit_hash: ${{ steps.get_commit_hash.outputs.COMMIT_HASH }}
     steps:
+      - name: Check Repository
+        run: |
+          if [[ "$GITHUB_REPOSITORY" != "MobilePorting/FNF-PsychEngine-Mobile" ]]; then
+            echo "Releaser cannot be executed in forks of Psych Engine Mobile."
+            exit 1
+          fi
+
       - name: Get latest commit hash
         id: get_commit_hash
         run: |
@@ -17,6 +24,7 @@ jobs:
 
   build:
     name: Build
+    if: needs.get-commit-hash.result != 'failure'
     strategy:
       matrix:
         include:
@@ -43,13 +51,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions: write-all
     steps:
-      - name: Check Repository
-        run: |
-          if [[ "$GITHUB_REPOSITORY" != "MobilePorting/FNF-PsychEngine-Mobile" ]]; then
-            echo "Releaser cannot be executed in forks of Psych Engine Mobile."
-            exit 1
-          fi
-
       - name: Download Android Build
         uses: actions/download-artifact@main
         with:
