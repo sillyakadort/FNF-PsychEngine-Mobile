@@ -44,6 +44,13 @@ jobs:
     runs-on: ubuntu-latest
     permissions: write-all
     steps:
+      - name: Check Repository
+        run: |
+          if [[ "$GITHUB_REPOSITORY" != "MobilePorting/FNF-PsychEngine-Mobile" ]]; then
+            echo "Releaser cannot be executed in forks of Psych Engine Mobile."
+            exit 1
+          fi
+
       - name: Download Android Build
         uses: actions/download-artifact@main
         with:
