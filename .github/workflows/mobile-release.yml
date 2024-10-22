@@ -15,8 +15,8 @@ jobs:
           echo "Latest commit hash is $commit_hash"
           echo "::set-output name=COMMIT_HASH::$commit_hash"
 
-  Build:
-    runs-on: ${{ matrix.os }}
+  build:
+    name: Build
     strategy:
       matrix:
         os: [ubuntu-22.04, macos-15]
@@ -31,23 +31,16 @@ jobs:
             buildArgs: "ios -final -nosign"
             artifactName: iOSBuild
             artifactPath: "export/release/ios/build/Release-iphoneos/*.ipa"
-    steps:
-      - name: Checkout
-        uses: actions/checkout@main
-        with:
-          path: ${{ github.workspace }}
-
-      - name: Build
-        uses: ./.github/workflows/build.yml
-        with:
-          name: ${{ matrix.name }}
-          os: ${{ matrix.os }}
-          buildArgs: ${{ matrix.buildArgs }}
-          artifactName: ${{ matrix.artifactName }}
-          artifactPath: ${{ matrix.artifactPath }}
+    uses: ./.github/workflows/build.yml
+    with:
+        name: ${{ matrix.name }}
+        os: ${{ matrix.os }}
+        buildArgs: ${{ matrix.buildArgs }}
+        artifactName: ${{ matrix.artifactName }}
+        artifactPath: ${{ matrix.artifactPath }}
 
   Releaser:
-    needs: [get-commit-hash, Build]
+    needs: [get-commit-hash, build]
     runs-on: ubuntu-latest
     permissions: write-all
     steps:

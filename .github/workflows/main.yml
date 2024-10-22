@@ -4,7 +4,6 @@ on: workflow_dispatch
 
 jobs:
   Build:
-    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-22.04, macos-15]
@@ -39,17 +38,10 @@ jobs:
             buildArgs: "ios -nosign"
             artifactName: iOSBuild
             artifactPath: "export/release/ios/build/Release-iphoneos/*.ipa"
-    steps:
-      - name: Checkout
-        uses: actions/checkout@main
-        with:
-          path: ${{ github.workspace }}
-
-      - name: Build
-        uses: ./.github/workflows/build.yml
-        with:
-          name: ${{ matrix.name }}
-          os: ${{ matrix.os }}
-          buildArgs: ${{ matrix.buildArgs }}
-          artifactName: ${{ matrix.artifactName }}
-          artifactPath: ${{ matrix.artifactPath }}
+    uses: ./.github/workflows/build.yml
+    with:
+        name: ${{ matrix.name }}
+        os: ${{ matrix.os }}
+        buildArgs: ${{ matrix.buildArgs }}
+        artifactName: ${{ matrix.artifactName }}
+        artifactPath: ${{ matrix.artifactPath }}
