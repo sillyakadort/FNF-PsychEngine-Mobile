@@ -7,7 +7,6 @@ jobs:
     name: ${{ matrix.name }}
     strategy:
       matrix:
-        os: [ubuntu-22.04, macos-15]
         include:
           - name: Windows
             os: windows-2022
