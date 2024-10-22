@@ -21,7 +21,7 @@ jobs:
         run: |
           commit_hash=${GITHUB_SHA::7}
           echo "Latest commit hash is $commit_hash"
-          echo "COMMIT_HASH=$commit_hash" >> $GITHUB_ENV
+          echo "::set-output name=COMMIT_HASH::$commit_hash"
 
   build:
     name: ${{ matrix.name }}
@@ -73,8 +73,8 @@ jobs:
       - name: Publish The Release
         uses: softprops/action-gh-release@master
         with:
-          name: "DevBuild ${{ env.COMMIT_HASH }}"
-          tag_name: "devbuild-${{ env.COMMIT_HASH }}"
+          name: "DevBuild ${{ needs.get-commit-hash.outputs.commit_hash }}"
+          tag_name: "devbuild-${{ needs.get-commit-hash.outputs.commit_hash }}"
           prerelease: true
           files: |
             /home/runner/*.apk
