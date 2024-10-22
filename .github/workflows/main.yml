@@ -39,8 +39,10 @@ jobs:
             buildArgs: "ios -nosign"
             artifactName: iOSBuild
             artifactPath: "export/release/ios/build/Release-iphoneos/*.ipa"
-
     steps:
+      - name: Checkout
+        uses: actions/checkout@main
+
       - name: Build
         uses: ./.github/workflows/build.yml
         with:
