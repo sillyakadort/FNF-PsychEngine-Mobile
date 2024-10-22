@@ -4,6 +4,7 @@ on: workflow_dispatch
 
 jobs:
   Build:
+    name: ${{ matrix.name }}
     strategy:
       matrix:
         os: [ubuntu-22.04, macos-15]
