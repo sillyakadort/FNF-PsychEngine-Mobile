@@ -1,7 +1,5 @@
 name: Main
-
 on: workflow_dispatch
-
 jobs:
   Build:
     name: ${{ matrix.name }}
