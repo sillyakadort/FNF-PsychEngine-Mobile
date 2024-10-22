@@ -38,7 +38,7 @@ jobs:
           path: ${{ github.workspace }}
 
       - name: Build
-        uses: ./.github/workflows/build.yml
+        uses: ./.github/actions/build
         with:
           name: ${{ matrix.name }}
           os: ${{ matrix.os }}
