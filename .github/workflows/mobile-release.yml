@@ -55,8 +55,8 @@ jobs:
         buildArgs: ${{ matrix.buildArgs }}
         artifactName: ${{ matrix.artifactName }}
         artifactPath: ${{ matrix.artifactPath }}
-     outputs:
-        project_name: ${{ steps.build.outputs.project_name }}
+    # outputs:
+        # project_name: ${{ steps.build.outputs.project_name }}
 
   Releaser:
     needs: [get-commit-hash, build]
