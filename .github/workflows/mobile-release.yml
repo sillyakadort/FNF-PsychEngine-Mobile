@@ -1,8 +1,13 @@
 name: Mobile + Release
 on: workflow_dispatch
+
 permissions:
   contents: write
   discussions: write
+
+env:
+  REPO_PATH: MobilePorting/FNF-PsychEngine-Mobile
+
 jobs:
   get-commit-hash:
     runs-on: ubuntu-latest
@@ -11,9 +16,13 @@ jobs:
     steps:
       - name: Check Repository
         run: |
-          if [[ "$GITHUB_REPOSITORY" != "MobilePorting/FNF-PsychEngine-Mobile" ]]; then
-            echo "Releaser cannot be executed in forks of Psych Engine Mobile."
-            exit 1
+          echo "GITHUB_REPOSITORY: $GITHUB_REPOSITORY"
+          echo "REPO_PATH: ${{ env.REPO_PATH }}"
+          if [[ "$GITHUB_REPOSITORY" != "${{ env.REPO_PATH }}" ]]; then
+            echo "Doesn't seem to be correct, returning SIGABRT..."
+            exit 6
+          else
+            echo "Seems to be correct..."
           fi
 
       - name: Get latest commit hash
@@ -30,7 +39,7 @@ jobs:
       matrix:
         include:
           - name: Android
-            os: ubuntu-22.04
+            os: macos-14
             buildArgs: "android -final -D officialBuild"
             artifactName: androidBuild
             artifactPath: "export/release/android/bin/app/build/outputs/apk/release/*.apk"
@@ -46,6 +55,8 @@ jobs:
         buildArgs: ${{ matrix.buildArgs }}
         artifactName: ${{ matrix.artifactName }}
         artifactPath: ${{ matrix.artifactPath }}
+     outputs:
+        project_name: ${{ steps.build.outputs.project_name }}
 
   Releaser:
     needs: [get-commit-hash, build]
@@ -59,7 +70,7 @@ jobs:
            path: /home/runner
 
       - name: Move Android File
-        run: mv /home/runner/PsychEngine-release.apk /home/runner/PsychEngine-Android.apk
+        run: mv /home/runner/${{ needs.build.outputs.project_name }}-release.apk /home/runner/${{ needs.build.outputs.project_name }}-Android.apk
 
       - name: Download iOS Build
         uses: actions/download-artifact@main
@@ -68,7 +79,7 @@ jobs:
            path: ${{ github.workspace }}
 
       - name: Zip iOS Build For Release
-        run: zip -r /home/runner/PsychEngine-iOS.zip ${{ github.workspace }}/PsychEngine.ipa
+        run: zip -r /home/runner/${{ needs.build.outputs.project_name }}-iOS.zip ${{ github.workspace }}/${{ needs.build.outputs.project_name }}.ipa
 
       - name: Publish The Release
         uses: softprops/action-gh-release@master

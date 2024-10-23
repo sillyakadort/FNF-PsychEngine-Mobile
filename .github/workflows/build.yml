@@ -1,4 +1,5 @@
 name: Build
+
 on:
   workflow_call:
     inputs:
@@ -17,9 +18,14 @@ on:
       artifactPath:
         required: true
         type: string
+      outputs:
+        project_name:
+          description: 'Project Name'
+          value: ${{ env.PROJECT_NAME }}
 
 env:
   HAXE_VERSION: 4.3.6
+  PROJECT_NAME: PsychEngine
 
 jobs:
   build:
@@ -54,14 +60,14 @@ jobs:
           haxelib install hxvlc 1.9.2 --quiet --skip-dependencies
           haxelib git funkin.vis https://github.com/FunkinCrew/funkVis 22b1ce089dd924f15cdc4632397ef3504d464e90 --quiet --skip-dependencies
           haxelib git grig.audio https://gitlab.com/haxe-grig/grig.audio.git cbf91e2180fd2e374924fe74844086aab7891666 --quiet
-          haxelib git extension-androidtools https://github.com/MAJigsaw77/extension-androidtools df9dfd0cda74e5460ae3afcfff1081c50959ed4a --quiet --skip-dependencies
+          haxelib git extension-androidtools https://github.com/MAJigsaw77/extension-androidtools --quiet --skip-dependencies
 
       - name: Configure Android
-        if: ${{ inputs.name == 'Android' }}
+        if: inputs.name == 'Android'
         run: |
           haxelib run lime config ANDROID_SDK $ANDROID_HOME
           haxelib run lime config ANDROID_NDK_ROOT $ANDROID_NDK_LATEST_HOME
-          haxelib run lime config JAVA_HOME $JAVA_HOME_17_X64
+          haxelib run lime config JAVA_HOME $JAVA_HOME_17_arm64
           haxelib run lime config ANDROID_SETUP true
 
       - name: Compile
@@ -70,10 +76,10 @@ jobs:
       - name: Make IPA
         if: inputs.name == 'iOS'
         run: |
-          cd export/release/ios/build/*-iphoneos
+          cd export/release/ios/build/Release-iphoneos
           mkdir Payload
           mv *.app Payload
-          zip -r PsychEngine.ipa Payload
+          zip -r ${{ env.PROJECT_NAME }}.ipa Payload
 
       - name: Upload Artifact
         uses: actions/upload-artifact@main

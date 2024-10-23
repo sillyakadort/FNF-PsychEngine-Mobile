@@ -1,5 +1,7 @@
 name: Main
+
 on: workflow_dispatch
+
 jobs:
   Build:
     name: ${{ matrix.name }}
@@ -27,7 +29,7 @@ jobs:
             artifactName: macOSBuild-arm64
             artifactPath: export/release/macos/bin/*
           - name: Android
-            os: ubuntu-24.04
+            os: macos-14
             buildArgs: "android -ONLY_ARMV7"
             artifactName: androidBuild
             artifactPath: "export/release/android/bin/app/build/outputs/apk/release/*.apk"
