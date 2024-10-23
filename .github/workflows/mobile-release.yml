@@ -6,6 +6,7 @@ permissions:
   discussions: write
 
 env:
+  PROJECT_NAME: PsychEngine
   REPO_PATH: MobilePorting/FNF-PsychEngine-Mobile
 
 jobs:
@@ -55,8 +56,6 @@ jobs:
         buildArgs: ${{ matrix.buildArgs }}
         artifactName: ${{ matrix.artifactName }}
         artifactPath: ${{ matrix.artifactPath }}
-    # outputs:
-        # project_name: ${{ steps.build.outputs.project_name }}
 
   Releaser:
     needs: [get-commit-hash, build]
@@ -70,7 +69,7 @@ jobs:
            path: /home/runner
 
       - name: Move Android File
-        run: mv /home/runner/${{ needs.build.outputs.project_name }}-release.apk /home/runner/${{ needs.build.outputs.project_name }}-Android.apk
+        run: mv /home/runner/${{ env.PROJECT_NAME }}-release.apk /home/runner/${{ env.PROJECT_NAME }}-Android.apk
 
       - name: Download iOS Build
         uses: actions/download-artifact@main
@@ -79,7 +78,7 @@ jobs:
            path: ${{ github.workspace }}
 
       - name: Zip iOS Build For Release
-        run: zip -r /home/runner/${{ needs.build.outputs.project_name }}-iOS.zip ${{ github.workspace }}/${{ needs.build.outputs.project_name }}.ipa
+        run: zip -r /home/runner/${{ env.PROJECT_NAME }}-iOS.zip ${{ github.workspace }}/${{ env.PROJECT_NAME }}.ipa
 
       - name: Publish The Release
         uses: softprops/action-gh-release@master

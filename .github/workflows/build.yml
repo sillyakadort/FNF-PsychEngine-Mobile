@@ -18,10 +18,6 @@ on:
       artifactPath:
         required: true
         type: string
-      outputs:
-        project_name:
-          description: 'Project Name'
-          value: ${{ env.PROJECT_NAME }}
 
 env:
   HAXE_VERSION: 4.3.6
