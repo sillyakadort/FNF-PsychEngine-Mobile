@@ -929,7 +929,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 				}
 				else if(FlxG.keys.justPressed.R)
 				{
-					Conductor.songPosition = FlxG.sound.music.time = cachedSectionTimes[curSec] + (curSec > 0 ? 0.000001 : 0);
+					Conductor.songPosition = FlxG.sound.music.time = vocals.time = opponentVocals.time = cachedSectionTimes[curSec] + (curSec > 0 ? 0.000001 : 0);
 				}
 				else if(touchPad.buttonUp.pressed || FlxG.keys.pressed.W != touchPad.buttonDown.pressed || FlxG.keys.pressed.S || FlxG.mouse.wheel != 0)
 				{

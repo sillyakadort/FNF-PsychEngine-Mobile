@@ -1134,8 +1134,8 @@ class FunkinLua {
 		});
 
 		set("setObjectCamera", function(obj:String, camera:String = 'game') {
-			var real = game.getLuaObject(obj);
-			if(real!=null){
+			var real:FlxBasic = game.getLuaObject(obj);
+			if(real != null) {
 				real.cameras = [LuaUtils.cameraFromString(camera)];
 				return true;
 			}
@@ -1154,7 +1154,7 @@ class FunkinLua {
 			return false;
 		});
 		set("setBlendMode", function(obj:String, blend:String = '') {
-			var real = game.getLuaObject(obj);
+			var real:FlxSprite = game.getLuaObject(obj);
 			if(real != null) {
 				real.blend = LuaUtils.blendModeFromString(blend);
 				return true;
@@ -1203,22 +1203,16 @@ class FunkinLua {
 		});
 		set("objectsOverlap", function(obj1:String, obj2:String) {
 			var namesArray:Array<String> = [obj1, obj2];
-			var objectsArray:Array<FlxSprite> = [];
+			var objectsArray:Array<FlxBasic> = [];
 			for (i in 0...namesArray.length)
 			{
-				var real = game.getLuaObject(namesArray[i]);
-				if(real!=null) {
+				var real:FlxBasic = game.getLuaObject(namesArray[i]);
+				if(real != null)
 					objectsArray.push(real);
-				} else {
+				else
 					objectsArray.push(Reflect.getProperty(LuaUtils.getTargetInstance(), namesArray[i]));
-				}
 			}
-
-			if(!objectsArray.contains(null) && FlxG.overlap(objectsArray[0], objectsArray[1]))
-			{
-				return true;
-			}
-			return false;
+			return (!objectsArray.contains(null) && FlxG.overlap(objectsArray[0], objectsArray[1]));
 		});
 		set("getPixelColor", function(obj:String, x:Int, y:Int) {
 			var split:Array<String> = obj.split('.');
