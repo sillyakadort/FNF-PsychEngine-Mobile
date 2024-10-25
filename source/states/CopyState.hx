@@ -17,7 +17,7 @@ import flixel.ui.FlxBar.FlxBarFillDirection;
 class CopyState extends MusicBeatState
 {
 	private static final textFilesExtensions:Array<String> = ['ini', 'txt', 'xml', 'hxs', 'hx', 'lua', 'json', 'frag', 'vert'];
-	public static final IGNORE_FOLDER_FILE_NAME:String = "ignore.txt";
+	public static final IGNORE_FOLDER_FILE_NAME:String = "CopyState-Ignore.txt";
 	private static var directoriesToIgnore:Array<String> = [];
 	public static var locatedFiles:Array<String> = [];
 	public static var maxLoopTimes:Int = 0;
@@ -112,7 +112,7 @@ class CopyState extends MusicBeatState
 		{
 			var directory = Path.directory(file);
 			if (!FileSystem.exists(directory))
-				StorageUtil.createDirectories(directory);
+				FileSystem.createDirectory(directory);
 			try
 			{
 				if (OpenFLAssets.exists(getFile(file)))
@@ -146,7 +146,7 @@ class CopyState extends MusicBeatState
 			if (fileData == null)
 				fileData = '';
 			if (!FileSystem.exists(directory))
-				StorageUtil.createDirectories(directory);
+				FileSystem.createDirectory(directory);
 			File.saveContent(Path.join([directory, fileName]), fileData);
 		}
 		catch (e:haxe.Exception)
