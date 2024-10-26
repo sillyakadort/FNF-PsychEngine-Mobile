@@ -54,9 +54,10 @@ class ALSoftConfig
 	{
 		var fields = Context.getBuildFields();
 		var pos = Context.currentPos();
-		var configs = File.getContent('alsoft.txt');
-		var newFields = fields.copy();
 
+		if (!FileSystem.exists('alsoft.txt')) return fields;
+
+		var newFields = fields.copy();
 		for (i => field in fields)
 		{
 			if (field.name == 'ANDROID_OPENAL_CONFIG')
@@ -64,7 +65,7 @@ class ALSoftConfig
 				newFields[i] = {
 					name: 'ANDROID_OPENAL_CONFIG',
 					access: [APrivate, AStatic, AFinal],
-					kind: FVar(macro :String, macro $v{configs}),
+					kind: FVar(macro :String, macro $v{File.getContent('alsoft.txt')}),
 					pos: pos,
 				};
 			}
