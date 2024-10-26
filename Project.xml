@@ -105,6 +105,10 @@
 		<assets path="alsoft.txt" rename="plugins/alsoft.conf" type="text" unless="windows"/>
 	</section>
 
+	<section if="android">
+		<assets path="alsoft.txt" rename="alsoft.conf" type="text" />
+	</section>
+
 	<!-- _______________________________ Libraries ______________________________ -->
 
 	<haxelib name="flixel" version="git"/>
