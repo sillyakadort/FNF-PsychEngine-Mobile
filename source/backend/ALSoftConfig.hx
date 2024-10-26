@@ -1,6 +1,10 @@
 package backend;
 
 import haxe.io.Path;
+import lime.system.System;
+#if android
+import lime.system.JNI;
+#end
 
 /*
 A class that simply points OpenALSoft to a custom configuration file when the game starts up.
@@ -11,7 +15,7 @@ The config overrides a few global OpenALSoft settings with the aim of improving 
 	#if desktop
 	static function __init__():Void
 	{
-		var origin:String = #if (hl || mobile) Sys.getCwd() #else Sys.programPath() #end;
+		var origin:String = #if hl Sys.getCwd() #elseif mobile Path.addTrailingSlash(System.applicationStorageDirectory) #else Sys.programPath() #end;
 
 		var configPath:String = Path.directory(Path.withoutExtension(origin));
 		#if windows
@@ -30,7 +34,7 @@ The config overrides a few global OpenALSoft settings with the aim of improving 
 		#if android
 		if (exists)
 		{
-			lime.system.JNI.createStaticMethod('org/libsdl/app/SDLActivity', 'nativeSetenv', '(Ljava/lang/String;Ljava/lang/String;)V')("ALSOFT_CONF", configPath);
+			JNI.createStaticMethod('org/libsdl/app/SDLActivity', 'nativeSetenv', '(Ljava/lang/String;Ljava/lang/String;)V')("ALSOFT_CONF", configPath);
 		}
 		else
 		{
