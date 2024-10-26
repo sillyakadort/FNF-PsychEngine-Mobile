@@ -19,10 +19,6 @@ import states.CopyState;
 #if linux
 import lime.graphics.Image;
 
-#if desktop
-import backend.ALSoftConfig; // Just to make sure DCE doesn't remove this, since it's not directly referenced anywhere else.
-#end
-
 @:cppInclude('./external/gamemode_client.h')
 @:cppFileCode('
 	#define GAMEMODE_AUTO

@@ -28,7 +28,6 @@ class AudioManager
 		{
 			if (context == null)
 			{
-
 				AudioManager.context = new AudioContext();
 				context = AudioManager.context;
 
@@ -37,9 +36,9 @@ class AudioManager
 				{
 					var alc = context.openal;
 
-                    #if (desktop || android)
-                    ALSoftConfig.init();
-                    #end
+					#if (lime_openal && !ios)
+					ALSoftConfig.init();
+					#end
 					var device = alc.openDevice();
 					var ctx = alc.createContext(device);
 					alc.makeContextCurrent(ctx);
