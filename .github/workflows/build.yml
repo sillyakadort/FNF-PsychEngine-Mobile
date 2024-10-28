@@ -40,9 +40,9 @@ jobs:
         if: inputs.name == 'Linux'
         run: sudo apt install libvlc-dev libvlccore-dev
 
-        # https://github.com/actions/runner-images/issues/10814
+      # https://github.com/actions/runner-images/issues/10814
       - name: Workaround build-tools issue
-        if : inputs.name == 'Android'
+        if: inputs.name == 'Android'
         run: | 
           curl https://dl.google.com/android/repository/build-tools_r35_macosx.zip > $ANDROID_HOME/build-tools_r35_macosx.zip
           cd $ANDROID_HOME
