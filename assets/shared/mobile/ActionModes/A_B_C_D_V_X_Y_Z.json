@@ -4,7 +4,7 @@
       "button": "buttonV",
       "graphic": "v",
       "x": 770,
-      "y": 467,
+      "y": 462,
       "width": 132,
       "height": 125,
       "color": "0x49A9B2"
@@ -22,7 +22,7 @@
       "button": "buttonX",
       "graphic": "x",
       "x": 896,
-      "y": 467,
+      "y": 462,
       "width": 132,
       "height": 125,
       "color": "0x99062D"
@@ -40,7 +40,7 @@
       "button": "buttonY",
       "graphic": "y",
       "x": 1148,
-      "y": 467,
+      "y": 462,
       "width": 132,
       "height": 125,
       "color": "0x4A35B9"
@@ -58,7 +58,7 @@
       "button": "buttonZ",
       "graphic": "z",
       "x": 1274,
-      "y": 467,
+      "y": 462,
       "width": 132,
       "height": 125,
       "color": "0xCCB98E"
