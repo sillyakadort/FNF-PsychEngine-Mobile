@@ -121,11 +121,11 @@ class MobileInputManager extends FlxTypedSpriteGroup<TouchButton>
 		{
 			case MobileInputID.ANY:
 				for (button in trackedButtons.keys())
-				{
-					checkStatusUnsafe(button, state);
-				}
+					if (checkStatusUnsafe(button, state) == true)
+						return true;
+
 			case MobileInputID.NONE:
-				return false;
+				return !checkStatus(ANY, state);
 
 			default:
 				if (trackedButtons.exists(button))
