@@ -40,6 +40,16 @@ jobs:
         if: inputs.name == 'Linux'
         run: sudo apt install libvlc-dev libvlccore-dev
 
+      # https://github.com/actions/runner-images/issues/10814
+      - name: Workaround build-tools issue
+        if: inputs.name == 'Android'
+        run: | 
+          curl https://dl.google.com/android/repository/build-tools_r35_macosx.zip > $ANDROID_HOME/build-tools_r35_macosx.zip
+          cd $ANDROID_HOME
+          mkdir build-tools || true
+          unzip build-tools_r35_macosx.zip
+          mv android-15 build-tools/35.0.0 || true
+
       - name: Install Libraries
         run: |
           haxelib git hxcpp https://github.com/mcagabe19-stuff/hxcpp --quiet
@@ -62,8 +72,8 @@ jobs:
         if: inputs.name == 'Android'
         run: |
           haxelib run lime config ANDROID_SDK $ANDROID_HOME
-          haxelib run lime config ANDROID_NDK_ROOT $ANDROID_NDK_LATEST_HOME
-          haxelib run lime config JAVA_HOME $JAVA_HOME_17_X64
+          haxelib run lime config ANDROID_NDK_ROOT $ANDROID_NDK_HOME
+          haxelib run lime config JAVA_HOME $JAVA_HOME_17_arm64
           haxelib run lime config ANDROID_SETUP true
 
       - name: Compile
