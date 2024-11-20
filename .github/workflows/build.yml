@@ -78,6 +78,8 @@ jobs:
 
       - name: Compile
         run: haxelib run lime build ${{ inputs.buildArgs }}
+        env:
+          ANDROID_NDK_HOME: $ANDROID_NDK_LATEST_HOME
 
       - name: Make IPA
         if: inputs.name == 'iOS'
