@@ -682,6 +682,7 @@ class NoteSplashEditorState extends MusicBeatState
     override function closeSubState()
 	{
 		super.closeSubState();
+        removeTouchPad();
 		addTouchPad('LEFT_FULL', 'NOTE_SPLASH_EDITOR');
 	}
 

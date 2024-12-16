@@ -271,9 +271,9 @@ class ClientPrefs {
 					if(gamepadBinds.exists(control)) gamepadBinds.set(control, keys);
 			}
 			if(save.data.mobile != null) {
-					var loadedControls:Map<String, Array<MobileInputID>> = save.data.mobile;
-					for (control => keys in loadedControls)
-						if(mobileBinds.exists(control)) mobileBinds.set(control, keys);
+				var loadedControls:Map<String, Array<MobileInputID>> = save.data.mobile;
+				for (control => keys in loadedControls)
+					if(mobileBinds.exists(control)) mobileBinds.set(control, keys);
 			}
 			reloadVolumeKeys();
 		}
