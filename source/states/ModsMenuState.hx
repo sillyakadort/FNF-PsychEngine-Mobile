@@ -5,7 +5,7 @@ import backend.Mods;
 
 import flixel.FlxBasic;
 import flixel.graphics.FlxGraphic;
-import openfl.geom.Rectangle;
+import flash.geom.Rectangle;
 import haxe.Json;
 
 import flixel.util.FlxSpriteUtil;
@@ -14,7 +14,6 @@ import options.ModSettingsSubState;
 
 import openfl.display.BitmapData;
 import lime.utils.Assets;
-import mobile.backend.TouchUtil;
 
 class ModsMenuState extends MusicBeatState
 {
@@ -37,8 +36,8 @@ class ModsMenuState extends MusicBeatState
 	var bgDescription:FlxSprite;
 	var bgButtons:FlxSprite;
 
-	public static var modsGroup:FlxTypedGroup<ModItem>;
-	public static var curSelectedMod:Int = 0;
+	var modsGroup:FlxTypedGroup<ModItem>;
+	var curSelectedMod:Int = 0;
 	
 	var hoveringOnMods:Bool = true;
 	var curSelectedButton:Int = 0; ///-1 = Enable/Disable All, -2 = Reload

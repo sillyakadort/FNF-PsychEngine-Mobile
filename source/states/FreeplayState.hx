@@ -17,8 +17,6 @@ import openfl.utils.Assets;
 
 import haxe.Json;
 
-import lime.utils.Assets;
-
 class FreeplayState extends MusicBeatState
 {
 	var songs:Array<SongMetadata> = [];
