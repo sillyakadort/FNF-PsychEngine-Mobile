@@ -124,7 +124,7 @@ class MobileOptionsSubState extends BaseOptionsMenu
 		if (ClientPrefs.data.storageType != lastStorageType)
 		{
 			onStorageChange();
-			CoolUtil.showPopUp('Storage Type has been changed and you needed restart the game!!\nPress OK to close the game.', 'Notice!');
+			CoolUtil.showPopUp(Language.getPhrase('storage_type_change_message', 'Storage Type has been changed and you need restart the game!!\nPress OK to close the game.'), Language.getPhrase('mobile_notice', 'Notice!'));
 			lime.system.System.exit(0);
 		}
 		#end

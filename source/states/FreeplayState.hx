@@ -178,13 +178,11 @@ class FreeplayState extends MusicBeatState
 		bottomBG.alpha = 0.6;
 		add(bottomBG);
 
-		var thing:String;
-		if (controls.mobileC)
-			thing = "Press X to listen to the Song / Press C to open the Gameplay Changers Menu / Press Y to Reset your Score and Accuracy.";
-		else
-			thing = Language.getPhrase("freeplay_tip", "Press SPACE to listen to the Song / Press CTRL to open the Gameplay Changers Menu / Press RESET to Reset your Score and Accuracy.");
-
-		var leText:String = thing;
+		final space:String = (controls.mobileC) ? "X" : "SPACE";
+		final control:String = (controls.mobileC) ? "C" : "CTRL";
+		final reset:String = (controls.mobileC) ? "Y" : "RESET";
+		
+		var leText:String = Language.getPhrase("freeplay_tip", "Press {1} to listen to the Song / Press {2} to open the Gameplay Changers Menu / Press {3} to Reset your Score and Accuracy.", [space, control, reset]);
 		bottomString = leText;
 		var size:Int = 16;
 		bottomText = new FlxText(bottomBG.x, bottomBG.y + 4, FlxG.width, leText, size);

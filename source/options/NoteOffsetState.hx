@@ -535,6 +535,7 @@ class NoteOffsetState extends MusicBeatState
 
 		var str:String;
 		var str2:String;
+		final accept:String = (controls.mobileC) ? "A" : (!controls.controllerMode) ? "ACCEPT" : "Start";
 		if(onComboMenu)
 		{
 			str = Language.getPhrase('combo_offset', 'Combo Offset');
@@ -546,12 +547,7 @@ class NoteOffsetState extends MusicBeatState
 			addTouchPadCamera();
 		}
 
-		if(controls.mobileC)
-			str2 = '(Press A to Switch)';
-		else if(!controls.controllerMode)
-			str2 = Language.getPhrase('switch_on_accept', '(Press Accept to Switch)');
-		else
-			str2 = Language.getPhrase('switch_on_start', '(Press Start to Switch)');
+		str2 = Language.getPhrase('switch_on_button', '(Press {1} to Switch)', [accept]);
 
 		changeModeText.text = '< ${str.toUpperCase()} ${str2.toUpperCase()} >';
 	}

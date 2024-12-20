@@ -147,15 +147,15 @@ class NotesColorSubState extends MusicBeatSubstate
 
 		var tipX = 20;
 		var tipY = 660;
-		var tipText:String;
+		var reset:String;
 
 		if (controls.mobileC) {
-			tipText = "Press C to Reset the selected Note Part.";
+			reset = "C";
 			tipY = 0;
 		} else
-			tipText = Language.getPhrase('note_colors_tip', 'Press RESET to Reset the selected Note Part.');
+			reset = "RESET";
 
-		var tip:FlxText = new FlxText(tipX, tipY, 0, tipText, 16);
+		var tip:FlxText = new FlxText(tipX, tipY, 0, Language.getPhrase('note_colors_tip', 'Press {1} to Reset the selected Note Part.', [reset]), 16);
 		tip.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		tip.borderSize = 2;
 		add(tip);
