@@ -142,10 +142,10 @@ class ClientPrefs {
 		'reset'			=> [BACK]
 	];
 	public static var mobileBinds:Map<String, Array<MobileInputID>> = [
-		'note_up'		=> [NOTE_UP, UP2],
-		'note_left'		=> [NOTE_LEFT, LEFT2],
-		'note_down'		=> [NOTE_DOWN, DOWN2],
-		'note_right'	=> [NOTE_RIGHT, RIGHT2],
+		'note_up'		=> [NOTE_UP],
+		'note_left'		=> [NOTE_LEFT],
+		'note_down'		=> [NOTE_DOWN],
+		'note_right'	=> [NOTE_RIGHT],
 
 		'ui_up'			=> [UP],
 		'ui_left'		=> [LEFT],
