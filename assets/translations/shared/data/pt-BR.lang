@@ -157,6 +157,7 @@ key_pause: "Pause"
 key_volume_mute: "Mutar"
 key_volume_up: "Mais"
 key_volume_down: "Menos"
+key_fullscreen: "" // MTODO
 key_debug_1: "Botão 1"
 key_debug_2: "Botão 2"
 

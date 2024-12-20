@@ -147,10 +147,10 @@ class ClientPrefs {
 		'note_down'		=> [NOTE_DOWN, DOWN2],
 		'note_right'	=> [NOTE_RIGHT, RIGHT2],
 
-		'ui_up'			=> [UP, NOTE_UP],
-		'ui_left'		=> [LEFT, NOTE_LEFT],
-		'ui_down'		=> [DOWN, NOTE_DOWN],
-		'ui_right'		=> [RIGHT, NOTE_RIGHT],
+		'ui_up'			=> [UP],
+		'ui_left'		=> [LEFT],
+		'ui_down'		=> [DOWN],
+		'ui_right'		=> [RIGHT],
 
 		'accept'		=> [A],
 		'back'			=> [B],

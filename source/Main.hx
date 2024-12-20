@@ -3,7 +3,6 @@ package;
 import debug.FPSCounter;
 import backend.Highscore;
 import flixel.FlxGame;
-import haxe.io.Path;
 import openfl.Lib;
 import openfl.display.Sprite;
 import openfl.events.Event;
