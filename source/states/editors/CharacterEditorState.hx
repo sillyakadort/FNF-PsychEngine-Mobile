@@ -1085,7 +1085,8 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 
 		if((FlxG.keys.justPressed.F1 || touchPad.buttonF.justPressed) || (helpBg.visible && FlxG.keys.justPressed.ESCAPE))
 		{
-			if(controls.mobileC){
+			if(controls.mobileC)
+			{
 				touchPad.forEachAlive(function(button:TouchButton){
 					if(button.tag != 'F')
 						button.visible = !button.visible;

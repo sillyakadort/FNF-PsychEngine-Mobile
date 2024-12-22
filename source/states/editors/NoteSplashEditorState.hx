@@ -118,7 +118,7 @@ class NoteSplashEditorState extends MusicBeatState
         curText.x += 5;
         add(curText);
 
-        addTouchPad('LEFT_FULL', 'NOTE_SPLASH_EDITOR');
+		addTouchPad('LEFT_FULL', 'NOTE_SPLASH_EDITOR');
 
         super.create();
     }
@@ -1063,7 +1063,7 @@ class NoteSplashEditorHelpSubState extends MusicBeatSubstate
 
         add(noteDataText);
 
-        addTouchPad('NONE', 'B');
+		addTouchPad('NONE', 'B');
         touchPad.y -= 205;
     }
 
