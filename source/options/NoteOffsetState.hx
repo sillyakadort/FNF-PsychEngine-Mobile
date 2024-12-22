@@ -543,7 +543,7 @@ class NoteOffsetState extends MusicBeatState
 			addTouchPadCamera();
 		} else {
 			str = Language.getPhrase('note_delay', 'Note/Beat Delay');
-			addTouchPad('LEFT_FULL', 'A_B_C');
+			addTouchPad('LEFT_RIGHT', 'A_B_C');
 			addTouchPadCamera();
 		}
 
