@@ -71,7 +71,7 @@ class NoteSplashEditorState extends MusicBeatState
         shaderUI.y = UI.y + UI.height + 10;
         add(shaderUI);
 
-        final buttonF1:String = controls.mobileC ? "F" : "F1";
+        final buttonF1:String = (controls.mobileC) ? "F" : "F1";
 
         var tipText:FlxText = new FlxText();
         tipText.setFormat(null, 32);
@@ -1024,7 +1024,7 @@ class NoteSplashEditorHelpSubState extends MusicBeatSubstate
         bg.alpha = 0.6;
         add(bg);
 
-		var str:Array<String> = controls.mobileC ? ["Touch on a Strum", "to spawn a Splash", "", "Arrow Keys - Move Offset",
+		var str:Array<String> = (controls.mobileC) ? ["Touch on a Strum", "to spawn a Splash", "", "Arrow Keys - Move Offset",
 			"Hold Z - Move Offsets 10x faster", "", "", "C - Copy Current Offset", "V - Paste Copied Offset on Current Splash"] : [
 			"Click on a Strum or Press Space",
 			"to spawn a Splash",

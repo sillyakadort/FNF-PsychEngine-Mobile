@@ -466,7 +466,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		stageDropDown.list = loadFileList('stages/', 'data/stageList.txt');
 		onChartLoaded();
 
-		var tipText:FlxText = new FlxText(FlxG.width - 210, FlxG.height - 30, 200, 'Press ${controls.mobileC ? 'F' : 'F1'} for Help', 20);
+		var tipText:FlxText = new FlxText(FlxG.width - 210, FlxG.height - 30, 200, 'Press ${(controls.mobileC) ? 'F' : 'F1'} for Help', 20);
 		tipText.cameras = [camUI];
 		tipText.setFormat(null, 16, FlxColor.WHITE, RIGHT);
 		tipText.borderColor = FlxColor.BLACK;
@@ -489,7 +489,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		fullTipText.cameras = [camUI];
 		fullTipText.scrollFactor.set();
 		fullTipText.visible = fullTipText.active = false;
-		fullTipText.text = controls.mobileC ? [
+		fullTipText.text = (controls.mobileC) ? [
 			"Up/Down - Move Conductor's Time",
 			"Left/Right - Change Sections",
 			"Up/Down (On The Right) - Decrease/Increase Note Sustain Length",
@@ -525,8 +525,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 			"Z/X - Zoom in/out",
 			"Left/Right - Change Snap",
 			#if FLX_PITCH
-			"Left Bracket / Right Bracket - Change Song Playback Rate",
-			"ALT + Left Bracket / Right Bracket - Reset Song Playback Rate",
+			"Left Bracket / Right Bracket - Change Song Playback Rate", "ALT + Left Bracket / Right Bracket - Reset Song Playback Rate",
 			#end
 			"",
 			"Ctrl + Z - Undo",
@@ -774,7 +773,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 				}
 				else if(touchPad.buttonF.justPressed || FlxG.keys.justPressed.F1)
 				{
-					if(controls.mobileC)
+					if (controls.mobileC)
 					{
 						touchPad.forEachAlive(function(button:TouchButton){
 							if(button.tag != 'F')
@@ -787,7 +786,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 
 				if (touchPad.buttonZ.justPressed)
 				{
-					if(controls.mobileC)
+					if (controls.mobileC)
 					{
 						touchPad.forEachAlive(function(button:TouchButton){
 							if(button.tag != 'Z' && button.tag != 'LEFT' && button.tag != 'RIGHT' && button.tag != 'UP' && button.tag != 'DOWN')
@@ -4227,12 +4226,12 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 
 		btnY++;
 		btnY += 20;
-		var btn:PsychUIButton = new PsychUIButton(btnX, btnY, '  Preview (${controls.mobileC ? 'C' : 'F12'})', openEditorPlayState, btnWid);
+		var btn:PsychUIButton = new PsychUIButton(btnX, btnY, '  Preview (${(controls.mobileC) ? 'C' : 'F12'})', openEditorPlayState, btnWid);
 		btn.text.alignment = LEFT;
 		tab_group.add(btn);
 		
 		btnY += 20;
-		var btn:PsychUIButton = new PsychUIButton(btnX, btnY, '  Playtest (${controls.mobileC ? 'A' : 'ENTER'})', goToPlayState, btnWid);
+		var btn:PsychUIButton = new PsychUIButton(btnX, btnY, '  Playtest (${(controls.mobileC) ? 'A' : 'ENTER'})', goToPlayState, btnWid);
 		btn.text.alignment = LEFT;
 		tab_group.add(btn);
 

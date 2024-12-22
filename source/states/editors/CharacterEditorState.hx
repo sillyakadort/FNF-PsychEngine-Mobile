@@ -171,39 +171,41 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 
 	function addHelpScreen()
 	{
-		var str:Array<String> = controls.mobileC ? ["CAMERA",
-		"X/Y - Camera Zoom In/Out",
-		"G + Arrow Buttons - Move Camera",
-		"Z - Reset Camera Zoom",
-		"",
-		"CHARACTER",
-		"A - Reset Current Offset",
-		"V/D - Previous/Next Animation",
-		"Arrow Buttons - Move Offset",
-		"",
-		"OTHER",
-		"S - Toggle Silhouettes",
-		"Hold C - Move Offsets 10x faster and Camera 4x faster"]
-		:
-		["CAMERA",
-		"E/Q - Camera Zoom In/Out",
-		"J/K/L/I - Move Camera",
-		"R - Reset Camera Zoom",
-		"",
-		"CHARACTER",
-		"Ctrl + R - Reset Current Offset",
-		"Ctrl + C - Copy Current Offset",
-		"Ctrl + V - Paste Copied Offset on Current Animation",
-		"Ctrl + Z - Undo Last Paste or Reset",
-		"W/S - Previous/Next Animation",
-		"Space - Replay Animation",
-		"Arrow Keys/Mouse & Right Click - Move Offset",
-		"A/D - Frame Advance (Back/Forward)",
-		"",
-		"OTHER",
-		"F12 - Toggle Silhouettes",
-		"Hold Shift - Move Offsets 10x faster and Camera 4x faster",
-		"Hold Control - Move camera 4x slower"];
+		var str:Array<String> = (controls.mobileC) ? [
+			"CAMERA",
+			"X/Y - Camera Zoom In/Out",
+			"G + Arrow Buttons - Move Camera",
+			"Z - Reset Camera Zoom",
+			"",
+			"CHARACTER",
+			"A - Reset Current Offset",
+			"V/D - Previous/Next Animation",
+			"Arrow Buttons - Move Offset",
+			"",
+			"OTHER",
+			"S - Toggle Silhouettes",
+			"Hold C - Move Offsets 10x faster and Camera 4x faster"
+		] : [
+			"CAMERA",
+			"E/Q - Camera Zoom In/Out",
+			"J/K/L/I - Move Camera",
+			"R - Reset Camera Zoom",
+			"",
+			"CHARACTER",
+			"Ctrl + R - Reset Current Offset",
+			"Ctrl + C - Copy Current Offset",
+			"Ctrl + V - Paste Copied Offset on Current Animation",
+			"Ctrl + Z - Undo Last Paste or Reset",
+			"W/S - Previous/Next Animation",
+			"Space - Replay Animation",
+			"Arrow Keys/Mouse & Right Click - Move Offset",
+			"A/D - Frame Advance (Back/Forward)",
+			"",
+			"OTHER",
+			"F12 - Toggle Silhouettes",
+			"Hold Shift - Move Offsets 10x faster and Camera 4x faster",
+			"Hold Control - Move camera 4x slower"
+		];
 
 		helpBg = new FlxSprite().makeGraphic(1, 1, FlxColor.BLACK);
 		helpBg.scale.set(FlxG.width, FlxG.height);
@@ -948,8 +950,8 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 		}
 
 		var changedOffset = false;
-		var moveKeysP = controls.mobileC ? [touchPad.buttonLeft.justPressed, touchPad.buttonRight.justPressed, touchPad.buttonUp.justPressed, touchPad.buttonDown.justPressed] : [FlxG.keys.justPressed.LEFT, FlxG.keys.justPressed.RIGHT, FlxG.keys.justPressed.UP, FlxG.keys.justPressed.DOWN];
-		var moveKeys =  controls.mobileC ? [touchPad.buttonLeft.pressed, touchPad.buttonRight.pressed, touchPad.buttonUp.pressed, touchPad.buttonDown.pressed] : [FlxG.keys.pressed.LEFT, FlxG.keys.pressed.RIGHT, FlxG.keys.pressed.UP, FlxG.keys.pressed.DOWN];
+		var moveKeysP = (controls.mobileC) ? [touchPad.buttonLeft.justPressed, touchPad.buttonRight.justPressed, touchPad.buttonUp.justPressed, touchPad.buttonDown.justPressed] : [FlxG.keys.justPressed.LEFT, FlxG.keys.justPressed.RIGHT, FlxG.keys.justPressed.UP, FlxG.keys.justPressed.DOWN];
+		var moveKeys =  (controls.mobileC) ? [touchPad.buttonLeft.pressed, touchPad.buttonRight.pressed, touchPad.buttonUp.pressed, touchPad.buttonDown.pressed] : [FlxG.keys.pressed.LEFT, FlxG.keys.pressed.RIGHT, FlxG.keys.pressed.UP, FlxG.keys.pressed.DOWN];
 		if(moveKeysP.contains(true))
 		{
 			character.offset.x += ((moveKeysP[0] ? 1 : 0) - (moveKeysP[1] ? 1 : 0)) * shiftMultBig;
@@ -1085,7 +1087,7 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 
 		if((FlxG.keys.justPressed.F1 || touchPad.buttonF.justPressed) || (helpBg.visible && FlxG.keys.justPressed.ESCAPE))
 		{
-			if(controls.mobileC)
+			if (controls.mobileC)
 			{
 				touchPad.forEachAlive(function(button:TouchButton){
 					if(button.tag != 'F')

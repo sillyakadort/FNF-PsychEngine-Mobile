@@ -136,7 +136,7 @@ class StageEditorState extends MusicBeatState implements PsychUIEventHandler.Psy
 		var btn = 'F2';
 		#end
 
-		var str:Array<String> = controls.mobileC ? ["X/Y - Camera Zoom In/Out",
+		var str:Array<String> = (controls.mobileC) ? ["X/Y - Camera Zoom In/Out",
 			"G + Arrow Buttons - Move Camera",
 			"Z - Reset Camera Zoom",
 			"Arrow Buttons/Drag - Move Object",
@@ -237,7 +237,7 @@ class StageEditorState extends MusicBeatState implements PsychUIEventHandler.Psy
 		bg.updateHitbox();
 		add(bg);
 		
-		var tipText:FlxText = new FlxText(0, FlxG.height - 44, 300, 'Press ${controls.mobileC ? 'F' : 'F1'} for Help', 20);
+		var tipText:FlxText = new FlxText(0, FlxG.height - 44, 300, 'Press ${(controls.mobileC) ? 'F' : 'F1'} for Help', 20);
 		tipText.alignment = CENTER;
 		tipText.cameras = [camHUD];
 		tipText.scrollFactor.set();
@@ -1387,7 +1387,7 @@ class StageEditorState extends MusicBeatState implements PsychUIEventHandler.Psy
 
 		if((FlxG.keys.justPressed.F1 || touchPad.buttonF.justPressed) || (helpBg.visible && FlxG.keys.justPressed.ESCAPE))
 		{
-			if(controls.mobileC)
+			if (controls.mobileC)
 			{
 				touchPad.forEachAlive(function(button:TouchButton)
 				{
@@ -1404,7 +1404,7 @@ class StageEditorState extends MusicBeatState implements PsychUIEventHandler.Psy
 			UI_box.visible = !UI_box.visible;
 			UI_box.active = !UI_box.active;
 
-			if(controls.mobileC)
+			if (controls.mobileC)
 			{
 				touchPad.forEachAlive(function(button:TouchButton)
 				{
@@ -2335,8 +2335,8 @@ class StageEditorAnimationSubstate extends MusicBeatSubstate {
 			var spr:ModchartSprite = cast (target.sprite, ModchartSprite);
 			var anim:String = spr.animation.curAnim.name;
 			var changedOffset = false;
-			var moveKeysP = controls.mobileC ? [touchPad.buttonLeft.justPressed, touchPad.buttonRight.justPressed, touchPad.buttonUp.justPressed, touchPad.buttonDown.justPressed] : [FlxG.keys.justPressed.LEFT, FlxG.keys.justPressed.RIGHT, FlxG.keys.justPressed.UP, FlxG.keys.justPressed.DOWN];
-			var moveKeys = controls.mobileC ? [touchPad.buttonLeft.pressed, touchPad.buttonRight.pressed, touchPad.buttonUp.pressed, touchPad.buttonDown.pressed] : [FlxG.keys.pressed.LEFT, FlxG.keys.pressed.RIGHT, FlxG.keys.pressed.UP, FlxG.keys.pressed.DOWN];
+			var moveKeysP = (controls.mobileC) ? [touchPad.buttonLeft.justPressed, touchPad.buttonRight.justPressed, touchPad.buttonUp.justPressed, touchPad.buttonDown.justPressed] : [FlxG.keys.justPressed.LEFT, FlxG.keys.justPressed.RIGHT, FlxG.keys.justPressed.UP, FlxG.keys.justPressed.DOWN];
+			var moveKeys = (controls.mobileC) ? [touchPad.buttonLeft.pressed, touchPad.buttonRight.pressed, touchPad.buttonUp.pressed, touchPad.buttonDown.pressed] : [FlxG.keys.pressed.LEFT, FlxG.keys.pressed.RIGHT, FlxG.keys.pressed.UP, FlxG.keys.pressed.DOWN];
 			if(moveKeysP.contains(true) && !touchPad.buttonG.pressed)
 			{
 				if(spr.animOffsets.get(anim) != null)

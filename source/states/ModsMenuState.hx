@@ -103,7 +103,7 @@ class ModsMenuState extends MusicBeatState
 		var buttonWidth = Std.int(bgList.width);
 		var buttonHeight = 80;
 		var daY = 0;
-		if(controls.mobileC)
+		if (controls.mobileC)
 			daY = 70;
 		else
 			daY = 20;
@@ -318,7 +318,7 @@ class ModsMenuState extends MusicBeatState
 
 		addTouchPad('UP_DOWN', 'B');
 		touchPad.y -= 215; // so that you can press the buttons.
-		if(controls.mobileC)
+		if (controls.mobileC)
 			touchPad.alpha = 0.3;
 		super.create();
 	}
