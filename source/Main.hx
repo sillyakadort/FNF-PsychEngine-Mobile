@@ -128,6 +128,7 @@ class Main extends Sprite
 		ClientPrefs.loadDefaultKeys();
 		#if ACHIEVEMENTS_ALLOWED Achievements.load(); #end
 		addChild(new FlxGame(game.width, game.height, #if COPYSTATE_ALLOWED !CopyState.checkExistingFiles() ? CopyState : #end game.initialState, #if (flixel < "5.0.0") game.zoom, #end game.framerate, game.framerate, game.skipSplash, game.startFullscreen));
+		FlxG.stage.window.displayMode = FlxG.stage.window.displayMode;
 
 		fpsVar = new FPSCounter(10, 3, 0xFFFFFF);
 		addChild(fpsVar);
@@ -192,10 +193,7 @@ class Main extends Sprite
 	}
 
 	function toggleFullScreen(event:KeyboardEvent) {
-		if(Controls.instance.justReleased('fullscreen'))
-		{
-			FlxG.stage.window.displayMode = FlxG.stage.window.displayMode;
+		if (Controls.instance.justReleased('fullscreen'))
 			FlxG.fullscreen = !FlxG.fullscreen;
-		}
 	}
 }
