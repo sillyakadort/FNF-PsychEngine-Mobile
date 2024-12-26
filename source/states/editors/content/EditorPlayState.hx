@@ -893,7 +893,7 @@ class EditorPlayState extends MusicBeatSubstate
 	}
 
 	public function invalidateNote(note:Note):Void {
-		if (!ClientPrefs.data.lowQuality) note.kill();
+		//if (!ClientPrefs.data.lowQuality) note.kill();
 		notes.remove(note, true);
 		note.destroy();
 	}
