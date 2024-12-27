@@ -131,7 +131,7 @@ class Main extends Sprite
 		#if mobile
 		// This looks stupid but trust me it does smth
 		// It makes the sdl windows switch from SDL_WINDOW_FULLSCREEN_DESKTOP to SDL_WINDOW_FULLSCREEN
-		// On deletion it causes the biggest changes which i don't think area positive so we're using it for mobile only
+		// On desktop it changes how full screen works entirely in a way that i don't think is good so we're using it for mobile only
 		FlxG.stage.window.displayMode = FlxG.stage.window.displayMode;
 		#end
 
