@@ -128,12 +128,6 @@ class Main extends Sprite
 		ClientPrefs.loadDefaultKeys();
 		#if ACHIEVEMENTS_ALLOWED Achievements.load(); #end
 		addChild(new FlxGame(game.width, game.height, #if COPYSTATE_ALLOWED !CopyState.checkExistingFiles() ? CopyState : #end game.initialState, #if (flixel < "5.0.0") game.zoom, #end game.framerate, game.framerate, game.skipSplash, game.startFullscreen));
-		#if mobile
-		// This looks stupid but trust me it does smth
-		// It makes the sdl windows switch from SDL_WINDOW_FULLSCREEN_DESKTOP to SDL_WINDOW_FULLSCREEN
-		// On desktop it changes how full screen works entirely in a way that i don't think is good so we're using it for mobile only
-		FlxG.stage.window.displayMode = FlxG.stage.window.displayMode;
-		#end
 
 		fpsVar = new FPSCounter(10, 3, 0xFFFFFF);
 		addChild(fpsVar);
