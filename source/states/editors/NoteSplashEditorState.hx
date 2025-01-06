@@ -798,6 +798,7 @@ class NoteSplashEditorState extends MusicBeatState
             _file.addEventListener(Event.CANCEL, onSaveCancel);
             _file.addEventListener(IOErrorEvent.IO_ERROR, onSaveError);
             _file.save(data, imageSkin + ".json");
+            #end
         }
     }
 
