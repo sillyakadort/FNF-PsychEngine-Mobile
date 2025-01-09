@@ -184,10 +184,10 @@ class CoolUtil
 
 	public static function showPopUp(message:String, title:String):Void
 	{
-		#if android
+		/*#if android
 		AndroidTools.showAlertDialog(title, message, {name: "OK", func: null}, null);
-		#else
+		#else*/
 		FlxG.stage.window.alert(message, title);
-		#end
+		//#end
 	}
 }
