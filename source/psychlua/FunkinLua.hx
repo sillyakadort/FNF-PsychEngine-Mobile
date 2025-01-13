@@ -426,7 +426,7 @@ class FunkinLua {
 
 		//shitass stuff for epic coders like me B)  *image of obama giving himself a medal*
 		Lua_helper.add_callback(lua, "getObjectOrder", function(obj:String, ?group:String = null) {
-			var leObj:FlxSprite = LuaUtils.getObjectDirectly(obj);
+			var leObj:FlxBasic = LuaUtils.getObjectDirectly(obj);
 			if(leObj != null)
 			{
 				if(group != null)
@@ -455,7 +455,7 @@ class FunkinLua {
 			return -1;
 		});
 		Lua_helper.add_callback(lua, "setObjectOrder", function(obj:String, position:Int, ?group:String = null) {
-			var leObj:FlxSprite = LuaUtils.getObjectDirectly(obj);
+			var leObj:FlxBasic = LuaUtils.getObjectDirectly(obj);
 			if(leObj != null)
 			{
 				if(group != null)
