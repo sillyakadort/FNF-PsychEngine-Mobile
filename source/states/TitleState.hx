@@ -154,7 +154,7 @@ class TitleState extends MusicBeatState
 	{
 		persistentUpdate = true;
 		if (!initialized && FlxG.sound.music == null)
-			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+			FlxG.sound.playMusic(Paths.music('BirthdayMenu'), 0);
 
 		loadJsonData();
 		#if TITLE_SCREEN_EASTER_EGG easterEggData(); #end
@@ -558,16 +558,16 @@ class TitleState extends MusicBeatState
 					FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
 					FlxG.sound.music.fadeIn(4, 0, 0.7);
 				case 2:
-					createCoolText(['Psych Engine by'], 40);
+					createCoolText(['Mod by'], 40);
 				case 4:
-					addMoreText('Shadow Mario', 40);
-					addMoreText('Riveren', 40);
+					addMoreText('Dort', 40);
+					addMoreText('', 40);
 				case 5:
 					deleteCoolText();
 				case 6:
-					createCoolText(['Not associated', 'with'], -40);
+					createCoolText(['Happy', 'Birthday'], -40);
 				case 8:
-					addMoreText('newgrounds', -40);
+					addMoreText('Vinter!', -40);
 					ngSpr.visible = true;
 				case 9:
 					deleteCoolText();
@@ -579,11 +579,11 @@ class TitleState extends MusicBeatState
 				case 13:
 					deleteCoolText();
 				case 14:
-					addMoreText('Friday');
+					addMoreText('Vinter');
 				case 15:
-					addMoreText('Night');
+					addMoreText('Birthday');
 				case 16:
-					addMoreText('Funkin'); // credTextShit.text += '\nFunkin';
+					addMoreText('Mod'); // credTextShit.text += '\nFunkin';
 
 				case 17:
 					skipIntro();
